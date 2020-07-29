@@ -152,3 +152,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
+
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
