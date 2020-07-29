@@ -13,7 +13,6 @@ from rest_framework.decorators import api_view, permission_classes
 class MovieManagerView(
 	generics.GenericAPIView,
 	mixins.ListModelMixin,
-	mixins.CreateModelMixin,
 	mixins.RetrieveModelMixin,
 	mixins.UpdateModelMixin,
 	mixins.DestroyModelMixin):
@@ -29,9 +28,10 @@ class MovieManagerView(
 			return self.retrieve(request,id)
 		else:
 			return self.list(request)
-	@permission_classes([IsAuthenticated])
-	def post(self,request):
-		return self.create(request)
+	# @permission_classes([IsAuthenticated])
+	# def post(self,request):
+	# 	return self.create(request)
+
 	@permission_classes([IsAuthenticated])
 	def put(self,request,id=None):
 		return self.update(request,id)
@@ -40,9 +40,14 @@ class MovieManagerView(
 		return self.destroy(request,id)
 
 
-class MovieListView(generics.GenericAPIView,mixins.ListModelMixin):
+class MovieListView(generics.GenericAPIView,mixins.CreateModelMixin,mixins.ListModelMixin):
 	serializer_class = MovieDetailsSerializer
 	queryset = MovieDetails.objects.all()
-
+	lookup_field = 'id'
+	
 	def get(self,request):
 		return self.list(request)
+
+	@permission_classes([IsAuthenticated])
+	def post(self,request):
+		return self.create(request)
