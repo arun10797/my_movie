@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'ratings',
     'rest_framework_swagger',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

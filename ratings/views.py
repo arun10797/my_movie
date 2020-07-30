@@ -9,6 +9,8 @@ from rest_framework import viewsets
 from rest_framework.authentication import SessionAuthentication,BasicAuthentication 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+from django_filters.rest_framework import DjangoFilterBackend
+
 
 class MovieManagerView(
 	generics.GenericAPIView,
@@ -43,8 +45,10 @@ class MovieManagerView(
 class MovieListView(generics.GenericAPIView,mixins.CreateModelMixin,mixins.ListModelMixin):
 	serializer_class = MovieDetailsSerializer
 	queryset = MovieDetails.objects.all()
-	lookup_field = 'id'
-	
+	# lookup_field = 'id'
+	filter_backends = (DjangoFilterBackend,)
+	filter_fields = ('popularity','director','imdb_score','movie_title','genre__genre_title',)	
+
 	def get(self,request):
 		return self.list(request)
 

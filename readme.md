@@ -166,6 +166,37 @@ sample output
 
 https://imdb-task-arun.herokuapp.com/api/251/{DELETE}
 ```
+6) Serach Api
+``` python 
+https://imdb-task-arun.herokuapp.com/api/?your_query_string
+
+eg: https://imdb-task-arun.herokuapp.com/api/?popularity=88&director=Akira Kurosawa
+
+```
+sample output
+``` json 
+
+[
+    {
+        "id": 114,
+        "popularity": "88.0000000000",
+        "director": "Akira Kurosawa",
+        "imdb_score": "8.8000000000",
+        "movie_title": "Shichinin no samurai",
+        "genre": [
+            {
+                "id": 339,
+                "genre_title": "Adventure"
+            },
+            {
+                "id": 340,
+                "genre_title": " Drama"
+            }
+        ]
+    }
+]
+
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
