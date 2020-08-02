@@ -197,9 +197,6 @@ sample output
 ]
 
 ```
-## Scaling or how to overcome bottlenecks problems 
-For scaling any product which is expected to have a high traffic should be designed carefully taking everything is consideration such as data consistency.
-To overcome bottleneck problems we can have distributed architecture so that we can  route our requests on multiple server without facing downtime,scalling cannot be acchive on a single server,every computer has its limit.Best example we can take of facebook microservices architecture.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
